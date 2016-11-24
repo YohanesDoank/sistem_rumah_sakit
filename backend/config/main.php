@@ -18,6 +18,9 @@ return [
         'apotik' => [
             'class' => 'backend\modules\apotik\Apotik',
         ],
+        'ranap' => [
+            'class' => 'backend\modules\ranap\RawatInap',
+        ],
     ],
     'components' => [
         'request' => [
