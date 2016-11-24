@@ -21,6 +21,9 @@ return [
         'ranap' => [
             'class' => 'backend\modules\ranap\RawatInap',
         ],
+        'ralan' => [
+            'class' => 'backend\modules\ranap\RawatJalan',
+        ],
     ],
     'components' => [
         'request' => [
