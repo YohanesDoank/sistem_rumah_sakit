@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\apotik\models\Obat */
 
-$this->title = $model->kode_obat;
+$this->title = 'Obat '.$model->kode_obat;
 $this->params['breadcrumbs'][] = ['label' => 'Obats', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

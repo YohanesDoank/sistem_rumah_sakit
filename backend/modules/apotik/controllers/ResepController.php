@@ -5,11 +5,13 @@ namespace backend\modules\apotik\controllers;
 
 use Yii;
 use backend\modules\apotik\models\Model;
-use backend\models\Pasien;
 use backend\modules\apotik\models\Resep;
 use backend\modules\apotik\models\ResepSearch;
 
 use backend\modules\apotik\models\ResepObat;
+use backend\modules\apotik\models\Pasien;
+use backend\modules\apotik\models\Dokter;
+use backend\modules\apotik\models\Apoteker;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -211,9 +213,43 @@ class ResepController extends Controller
       return $models;
     }
 
+    public function getjumlahobat($id)
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('
+                 SELECT nama_obat,jumlah FROM apotik_obat JOIN apotik_resep_obat ON apotik_obat.kode_obat = apotik_resep_obat.kode_obat AND apotik_resep_obat.id_resep = "'.$id.'"');
+      $result = $command->queryAll();
+      return $result;
+    }
+    public function getmaxid()
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('SELECT MAX(nomor_resep) as max_id FROM `apotik_resep`');
+      $result = $command->queryAll();
+      return $result;
+    }
+
+    public function getpasien($id)
+    {
+      $models = Pasien::find()->where(['id_pasien' => $id])->one();
+      return $models->nama;
+    }
+
+    public function getdokter($id)
+    {
+      $models = Dokter::find()->where(['id_dokter' => $id])->one();
+      return $models->nama_dokter;
+    }
+    public function getapoteker($id)
+    {
+      $models = Apoteker::find()->where(['id_apoteker' => $id])->one();
+      return $models->nama;
+    }
+
     public function gettitle($id)
     {
       return "Apotik - Resep";
     }
+
 
 }
