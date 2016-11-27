@@ -23,7 +23,7 @@ return [
             'class' => 'backend\modules\ranap\RawatInap',
         ],
         'ralan' => [
-            'class' => 'backend\modules\ranap\RawatJalan',
+            'class' => 'backend\modules\ralan\Ralan',
         ],
     ],
     'components' => [
