@@ -11,24 +11,30 @@ $id_pasien = $model->id_pasien;
 $id_dokter = $model->id_dokter;
 $id_apoteker = $model->id_apoteker;
 $id = $model->nomor_resep;
-$this->title = "Resep no ".$model->nomor_resep;
+$this->title = "Resep : ".$model->nomor_resep;
 $this->params['breadcrumbs'][] = ['label' => 'Resep', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="resep-view">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->nomor_resep], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->nomor_resep], [
+  <h1><i class='fa fa-list-alt'></i> <?= Html::encode($this->title) ?></h1>
+  </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <?= Html::a('<i class="fa fa-fw fa-home"> |</i> Menu Utama Resep', ['index'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-plus-circle"> |</i> Tambah Resep Lagi', ['create'], ['class' => 'btn btn-primary']) ?>
+      </div>
+      <div class="col-sm-3">
+        <?= Html::a('<i class="fa fa-fw fa-exchange"> | </i> Update', ['update', 'id' => $model->nomor_resep], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-trash"> |</i> Delete', ['delete', 'id' => $model->nomor_resep], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Menu Utama Resep', ['index'], ['class' => 'btn btn-success']) ?>
-    </p> 
+      </div>
+    </div>
+    
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -197,7 +203,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   <td><?php echo $row['nama_obat']; ?></td>
                   <td><?php echo $row['jumlah']; ?></td>
                   <td><?php echo $row['harga_satuan']; ?></td>
-                  <?php $total_harga += $row['harga_satuan']; ?>
+                  <?php $total_harga += $row['harga_satuan']*$row['jumlah']; ?>
                   <?php $index += 1; ?>
                 </tr>
             <?php 

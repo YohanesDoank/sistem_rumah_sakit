@@ -121,4 +121,12 @@ class ApotekerController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function getmaxid()
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('SELECT MAX(id_apoteker) as max_id FROM `apotik_apoteker`');
+      $result = $command->queryAll();
+      return $result;
+    }
 }

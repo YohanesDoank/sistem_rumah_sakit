@@ -54,9 +54,9 @@ class Apoteker extends \yii\db\ActiveRecord
             'id_apoteker' => 'Id Apoteker',
             'nama' => 'Nama',
             'alamat' => 'Alamat',
-            'no_telp' => 'No Telp',
-            'jam_mulai' => 'Jam Mulai',
-            'jam_selesai' => 'Jam Selesai',
+            'no_telp' => 'No Telpon',
+            'jam_mulai' => 'Jam Mulai Kerja',
+            'jam_selesai' => 'Jam Selesai Kerja',
             'id_admin' => 'Id Admin',
         ];
     }

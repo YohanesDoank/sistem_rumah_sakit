@@ -64,7 +64,7 @@ class Resep extends \yii\db\ActiveRecord
             'nama_dokter' => 'Nama Dokter',
             'id_apoteker' => 'Id Apoteker',
             'nama_apoteker' => 'Nama Apoteker',
-            'resep_tgl' => 'Resep Tgl',
+            'resep_tgl' => 'Tanggal Resep',
             'id_admin' => 'Id Admin',
         ];
     }

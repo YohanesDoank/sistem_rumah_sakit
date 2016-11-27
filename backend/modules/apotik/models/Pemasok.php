@@ -50,7 +50,7 @@ class Pemasok extends \yii\db\ActiveRecord
         return [
             'id_pemasok' => 'Id Pemasok',
             'nama' => 'Nama',
-            'no_telp' => 'No Telp',
+            'no_telp' => 'No Telpon',
             'alamat' => 'Alamat',
             'id_admin' => 'Id Admin',
         ];

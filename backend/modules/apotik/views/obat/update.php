@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\apotik\models\Obat */
 
-$this->title = 'Update Obat: ' . $model->kode_obat;
-$this->params['breadcrumbs'][] = ['label' => 'Obats', 'url' => ['index']];
+$this->title = 'Update Obat : ' . $model->kode_obat;
+$this->params['breadcrumbs'][] = ['label' => 'Obat', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->kode_obat, 'url' => ['view', 'id' => $model->kode_obat]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

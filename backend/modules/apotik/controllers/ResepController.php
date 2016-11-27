@@ -48,8 +48,6 @@ class ResepController extends Controller
     {
         $searchModel = new ResepSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-
         return $this->render('index', [
 
             'searchModel' => $searchModel,
@@ -76,8 +74,21 @@ class ResepController extends Controller
      */
     public function actionCreate()
     {
+
         $model = new Resep();
         $modelsJumlahObat = [new ResepObat];
+
+        //buat get value nomor antrian terakhir
+
+        $result = $this->getmaxantrian();
+        $maxid = 0;
+        $no_resep = $model->nomor_resep;
+        foreach ($result as $row) {
+            $maxid = $row['max_id'];
+            $maxid += 1;
+        }
+        $connection = Yii::$app->getDb();
+        // selesai mendapatkan value nomor antrian terakhir disini
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $modelsJumlahObat = Model::createMultiple(ResepObat::classname());
@@ -104,6 +115,10 @@ class ResepController extends Controller
                     }
 
                     if ($flag) {
+                        // manual insert 
+                        $command2 = $connection->createCommand('INSERT INTO apotik_antrian (nomor_resep, nomor_antrian) VALUES ("'.$model->nomor_resep.'", "'.$maxid.'")');
+                        $result = $command2->execute();
+                        // end of manual insert
                         $transaction->commit();
                         return $this->redirect(['view', 'id' => $model->nomor_resep]);
                     }
@@ -225,6 +240,14 @@ class ResepController extends Controller
     {
       $connection = Yii::$app->getDb();
       $command = $connection->createCommand('SELECT MAX(nomor_resep) as max_id FROM `apotik_resep`');
+      $result = $command->queryAll();
+      return $result;
+    }
+
+    public function getmaxantrian()
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('SELECT MAX(nomor_antrian) as max_id from apotik_antrian');
       $result = $command->queryAll();
       return $result;
     }

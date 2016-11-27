@@ -23,17 +23,22 @@ foreach ($result as $row) {
     $maxid = $row['max_id'];
     $maxid += 1;
 }
-
 ?>
 <?php $this->title = 'Create Resep'; ?> 
-<?= Html::a('Menu utama Resep', ['index'], ['class' => 'btn btn-success']) ?>
+<?= Html::a('<i class="fa fa-fw fa-home"> |</i> Menu Utama Resep', ['index'], ['class' => 'btn btn-success']) ?>
 <br><br>
 <div class="customer-form">
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
         <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-list-alt"></i><strong> Resep <?php echo $maxid; ?></strong></h3>
-
+            <?php 
+            if (Yii::$app->controller->action->id == "create") {
+            ?>
+             <h3 class="box-title"><i class="fa fa-list-ol"></i><strong> Resep : <?php echo $maxid; ?></strong></h3>
+            <?php } else{
+            ?>
+             <h3 class="box-title"><i class="fa fa-list-ol"></i><strong> Resep : <?php echo $model->nomor_resep; ?></strong></h3>
+            <?php } ?>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
                   <i class="fa fa-minus"></i></button>
@@ -144,7 +149,7 @@ foreach ($result as $row) {
                                         ]); ?>
                                         <!-- <?= $form->field($modelObat, "[{$index}]kode_obat")->textInput(['maxlength' => true]) ?> -->
 
-                                        <?= $form->field($modelObat, "[{$index}]jumlah")->textInput(['maxlength' => true]) ?>
+                                        <?= $form->field($modelObat, "[{$index}]jumlah")->textInput(['maxlength' => true, 'type' => 'number', 'placeholder' => 'Isi jumlah angka dalam MG']) ?>
                                             
                                         </div><!-- end:row -->
                                     </div>

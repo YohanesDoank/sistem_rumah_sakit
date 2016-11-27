@@ -121,4 +121,11 @@ class PemasokController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function getmaxid()
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('SELECT id_pemasok FROM `apotik_pemasok` GROUP BY 1 DESC LIMIT 1');
+      $result = $command->queryAll();
+      return $result;
+    }
 }

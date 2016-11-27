@@ -4,18 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\apotik\models\ResepSearch */
+/* @var $searchModel backend\modules\apotik\models\AntrianSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '[APOTIK]';
+$this->title = 'Antrians';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="resep-index">
-    <h1><i class='fa fa-list-alt'></i> Data Resep</h1> 
+<div class="antrian-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('<i class="fa fa-fw fa-plus-circle"> | </i> Create Resep', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Antrian', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -23,12 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'nomor',
             'nomor_resep',
-            'id_pasien',
-            'id_dokter',
-            'id_apoteker',
-            'resep_tgl',
-            'id_admin',
+            'tanggal_antrian',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
