@@ -274,5 +274,16 @@ class ResepController extends Controller
       return "Apotik - Resep";
     }
 
+    public function beforeAction($action)
+    {
+      if (!parent::beforeAction($action)) {
+          return false;
+      }
 
+      if (\Yii::$app->user->identity->role !== "apotik") {
+          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN APOTIK !');
+      }
+
+      return true;
+    }
 }

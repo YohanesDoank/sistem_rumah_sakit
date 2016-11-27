@@ -31,4 +31,18 @@ class DefaultController extends Controller
       $models = Obat::find()->count();
       return $models;
     }
+
+
+    public function beforeAction($action)
+    {
+      if (!parent::beforeAction($action)) {
+          return false;
+      }
+
+      if (\Yii::$app->user->identity->role !== "apotik") {
+          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN APOTIK !');
+      }
+
+      return true;
+    }
 }

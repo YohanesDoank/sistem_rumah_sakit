@@ -130,24 +130,14 @@ foreach ($result as $row) {
                                                 echo Html::activeHiddenInput($modelObat, "[{$index}]nomor");
                                             }
                                         ?>
-
-                                        <!-- <?= $form->field($modelObat, '[{$index}]kode_obat')->widget(Select2::classname(), [
-                                            'data' => ArrayHelper::map(Obat::find()->all(),'kode_obat', 'nama_obat'),
-                                            'language' => 'en',
-                                            'options' => ['placeholder' => 'Select Obat ...', 'id' => 'obat'],
-                                            'pluginOptions' => [
-                                                'allowClear' => true
-                                            ],  
-                                        ]); ?> -->
                                         <?= $form->field($modelObat, "[{$index}]kode_obat")->widget(Select2::classname(), [
                                             'data' => ArrayHelper::map(Obat::find()->all(),'kode_obat', 'nama_obat'),
                                             'language' => 'en',
-                                            'options' => ['placeholder' => 'Select Obat ...', 'id' => 'obat'],
+                                            'options' => ['placeholder' => 'Select Obat ...'], 
                                             'pluginOptions' => [
                                                 'allowClear' => true
                                             ],  
                                         ]); ?>
-                                        <!-- <?= $form->field($modelObat, "[{$index}]kode_obat")->textInput(['maxlength' => true]) ?> -->
 
                                         <?= $form->field($modelObat, "[{$index}]jumlah")->textInput(['maxlength' => true, 'type' => 'number', 'placeholder' => 'Isi jumlah angka dalam MG']) ?>
                                             
