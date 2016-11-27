@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\ralan\models\DokterSearch */
+/* @var $searchModel backend\modules\ralan\models\JadwalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Dokter';
+$this->title = 'Jadwals';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="dokter-index">
+<div class="jadwal-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Dokter', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,10 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_dokter',
-            'nama_dokter',
-            'spesialis',
-            'posisi',
+            'id_jadwal',
+            'sesi',
+            'hari',
+            'ruang',
+            'jenis_poli',
+            // 'status_terisi',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

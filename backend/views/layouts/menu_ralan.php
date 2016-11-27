@@ -32,18 +32,18 @@
                 'items' => [
                     ['label' => 'Menu Admin', 'options' => ['class' => 'header']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Dashboard', 'icon' => 'fa fa-list-alt', 'url' => ['/site']],
+                    ['label' => 'Menu Utama Rawat Jalan', 'icon' => 'fa fa-registered', 'url' => ['/site']],
                     
                     [
                         'label' => 'Manajemen Rawat Jalan',
-                        'icon' => 'fa fa-share',
+                        'icon' => 'fa-share',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Dokter', 'icon' => 'fa fa-user', 'url' => ['/ralan/dokter']],
-                            ['label' => 'Medical Record', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/medrec']],
-                            ['label' => 'Pasien', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/pasien']],
-                            ['label' => 'Pemeriksaan Dokter', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/pemeriksaan']],
-                            ['label' => 'pendaftaran', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/pendaftaran']],
+                            ['label' => 'Dokter', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/dokter']],
+                            ['label' => 'Medical Record', 'icon' => 'fa fa-address-card-o', 'url' => ['/ralan/medrec']],
+                            ['label' => 'Pasien', 'icon' => 'fa fa-user-md', 'icon' => 'fa fa-user-circle-o', 'url' => ['/ralan/pasien']],
+                            ['label' => 'Pemeriksaan Dokter', 'icon' => 'fa fa-medkit', 'url' => ['/ralan/pemeriksaan']],
+                            ['label' => 'pendaftaran', 'icon' => 'fa fa-address-card-o', 'url' => ['/ralan/pendaftaran']],
                             ['label' => 'poli', 'icon' => 'fa fa-user-md', 'url' => ['/ralan/poli']],
                         ]
                     ],

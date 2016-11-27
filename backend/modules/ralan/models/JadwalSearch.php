@@ -5,12 +5,12 @@ namespace backend\modules\ralan\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\ralan\models\Dokter;
+use backend\modules\ralan\models\Jadwal;
 
 /**
- * DokterSearch represents the model behind the search form about `backend\modules\ralan\models\Dokter`.
+ * JadwalSearch represents the model behind the search form about `backend\modules\ralan\models\Jadwal`.
  */
-class DokterSearch extends Dokter
+class JadwalSearch extends Jadwal
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DokterSearch extends Dokter
     public function rules()
     {
         return [
-            [['id_dokter'], 'integer'],
-            [['nama_dokter', 'spesialis', 'posisi'], 'safe'],
+            [['id_jadwal', 'sesi', 'ruang', 'status_terisi'], 'integer'],
+            [['hari', 'jenis_poli'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DokterSearch extends Dokter
      */
     public function search($params)
     {
-        $query = Dokter::find();
+        $query = Jadwal::find();
 
         // add conditions that should always apply here
 
@@ -59,11 +59,14 @@ class DokterSearch extends Dokter
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_dokter' => $this->id_dokter,
+            'id_jadwal' => $this->id_jadwal,
+            'sesi' => $this->sesi,
+            'ruang' => $this->ruang,
+            'status_terisi' => $this->status_terisi,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_dokter', $this->nama_dokter])
-            ->andFilterWhere(['like', 'spesialis', $this->spesialis]);
+        $query->andFilterWhere(['like', 'hari', $this->hari])
+            ->andFilterWhere(['like', 'jenis_poli', $this->jenis_poli]);
 
         return $dataProvider;
     }

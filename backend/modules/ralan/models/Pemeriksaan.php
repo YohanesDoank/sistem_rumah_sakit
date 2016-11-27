@@ -67,4 +67,19 @@ class Pemeriksaan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Medrec::className(), ['id_mr' => 'id_medrec']);
     }
+
+    // public static function dropdown()
+    // {   
+    //     //get and cache data
+    //     static $dropdown;
+    //     if($dropdown === null){
+    //         //get all record from database and generate
+    //         $models = static::find()->all();
+    //         foreach($models as $model){
+    //             $dropdown($model->id) = $model->pemeriksaan;
+    //         }
+    //     }
+
+    //     return $dropdown;
+    // }
 }

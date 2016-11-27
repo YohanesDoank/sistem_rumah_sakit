@@ -18,8 +18,8 @@ class PoliSearch extends Poli
     public function rules()
     {
         return [
-            [['id_poli', 'id_dokter', 'sesi'], 'integer'],
-            [['nama_poli', 'hari'], 'safe'],
+            [['id_poli', 'id_dokter', 'id_jadwal'], 'integer'],
+            [['nama_poli'], 'safe'],
         ];
     }
 
@@ -61,12 +61,10 @@ class PoliSearch extends Poli
         $query->andFilterWhere([
             'id_poli' => $this->id_poli,
             'id_dokter' => $this->id_dokter,
-         
-            'sesi' => $this->sesi,
+            'id_jadwal' => $this->id_jadwal,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_poli', $this->nama_poli])
-            ->andFilterWhere(['like', 'hari', $this->hari]);
+        $query->andFilterWhere(['like', 'nama_poli', $this->nama_poli]);
 
         return $dataProvider;
     }

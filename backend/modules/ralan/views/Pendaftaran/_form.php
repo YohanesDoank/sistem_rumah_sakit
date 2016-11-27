@@ -7,7 +7,7 @@ use backend\modules\ralan\models\Pasien;
 use backend\modules\ralan\models\Poli;
 use yii\db\Query;
 use backend\modules\ralan\models\Dokter;
-
+use backend\modules\ralan\models\Jadwal;
 use kartik\select2\Select2;
 //use kartik\widgets\Depdrop;
 $connection = \Yii::$app->db;
@@ -73,9 +73,7 @@ $connection = \Yii::$app->db;
 
 
     <?= $form->field($model, 'id_poli')->widget(Select2::classname(),[
-        'data' => ArrayHelper::map(Poli::find()->where(['hari' => $day])->all(), 'id_poli', function($model, $defaultValue) {
-        return $model['nama_poli'].' ('.$model['jam_kerja'].')';
-    }),
+        'data' => ArrayHelper::map(Poli::find()->all(), 'id_poli', 'id_jadwal'),
         'language' => 'en',
         'options' => ['placeholder' => 'Select Poli', 'style'=>'width : 260px', 'id'=>'id_poli'],
         'pluginOptions'=> [

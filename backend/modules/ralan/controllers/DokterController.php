@@ -148,4 +148,17 @@ class DokterController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function beforeAction($action)
+    {
+      if (!parent::beforeAction($action)) {
+          return false;
+      }
+
+      if (\Yii::$app->user->identity->role !== "ralan") {
+          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN RAWAT JALAN !');
+      }
+
+      return true;
+    }
 }

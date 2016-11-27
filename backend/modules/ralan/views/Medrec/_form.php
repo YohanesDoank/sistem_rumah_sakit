@@ -16,8 +16,6 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'no_pendaftaran')->textInput() ?>
-
     <?= $form->field($model, 'no_pendaftaran')->widget(Select2::classname(),[
                 'data' => ArrayHelper::map(Pendaftaran::find()->all(), 'no_pendaftaran','no_pendaftaran'),
                 'language' => 'en',
@@ -29,9 +27,9 @@ use kartik\select2\Select2;
             
     ?>  
 
-    <?= $form->field($model, 'id_pasien')->textInput() ?>
+    <?= $form->field($model, 'id_pasien')->textInput(['readonly'=>true]) ?>
 
-    <?= $form->field($model, 'id_dokter')->textInput() ?>
+    <?= $form->field($model, 'id_dokter')->textInput(['readonly'=>true]) ?>
 
     <?= $form->field($model, 'diagnosa')->textInput(['maxlength' => true]) ?>
 
@@ -71,12 +69,19 @@ use kartik\select2\Select2;
 $script = <<< JS
 $('#no_pendaftaran').change(function(){
     var no_reg = $(this).val();
-    alert(no_reg);
-        $.get('index.php?r=ralan/pendaftaran/get-id-pasien', {no_reg : no_reg}, function(data){ 
+    //lert(no_reg);
+        $.get('index.php?r=ralan/pendaftaran/get-id_pasien', {no_reg : no_reg}, function(data){ 
     //         alert(data); 
                var data = $.parseJSON(data);
-               alert(data.id_pasien);
+    //           alert(data.id_pasien);
                $('#medrec-id_pasien').attr('value', data.id_pasien);
+        });
+
+        $.get('index.php?r=ralan/pendaftaran/get-id_dokter', {no_reg : no_reg}, function(data){ 
+    //         alert(data); 
+               var data = $.parseJSON(data);
+    //           alert(data.id_dokter);
+               $('#medrec-id_dokter').attr('value', data.id_dokter);
         });
    });
 

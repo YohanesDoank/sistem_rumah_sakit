@@ -3,16 +3,17 @@
 namespace backend\modules\ralan\controllers;
 
 use Yii;
-use backend\modules\ralan\models\Medrec;
-use backend\modules\ralan\models\MedrecSearch;
+use backend\modules\ralan\models\Jadwal;
+use backend\modules\ralan\models\JadwalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
- * MedrecController implements the CRUD actions for Medrec model.
+ * JadwalController implements the CRUD actions for Jadwal model.
  */
-class MedrecController extends Controller
+class JadwalController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class MedrecController extends Controller
     }
 
     /**
-     * Lists all Medrec models.
+     * Lists all Jadwal models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MedrecSearch();
+        $searchModel = new JadwalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class MedrecController extends Controller
     }
 
     /**
-     * Displays a single Medrec model.
+     * Displays a single Jadwal model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +58,16 @@ class MedrecController extends Controller
     }
 
     /**
-     * Creates a new Medrec model.
+     * Creates a new Jadwal model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Medrec();
+        $model = new Jadwal();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_mr]);
+            return $this->redirect(['view', 'id' => $model->id_jadwal]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +76,7 @@ class MedrecController extends Controller
     }
 
     /**
-     * Updates an existing Medrec model.
+     * Updates an existing Jadwal model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +86,7 @@ class MedrecController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_mr]);
+            return $this->redirect(['view', 'id' => $model->id_jadwal]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +95,7 @@ class MedrecController extends Controller
     }
 
     /**
-     * Deletes an existing Medrec model.
+     * Deletes an existing Jadwal model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,19 +108,26 @@ class MedrecController extends Controller
     }
 
     /**
-     * Finds the Medrec model based on its primary key value.
+     * Finds the Jadwal model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Medrec the loaded model
+     * @return Jadwal the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Medrec::findOne($id)) !== null) {
+        if (($model = Jadwal::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionGetHari($jadwal_id)
+    {
+        $id_jadwal=Jadwal::findOne($jadwal_id);
+        echo Json::encode($id_jadwal);
+
     }
 
     public function beforeAction($action)

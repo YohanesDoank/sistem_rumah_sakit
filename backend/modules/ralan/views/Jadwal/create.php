@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\ralan\models\Poli */
+/* @var $model backend\modules\ralan\models\Jadwal */
 
-$this->title = 'Create Poli';
-$this->params['breadcrumbs'][] = ['label' => 'Polis', 'url' => ['index']];
+$this->title = 'Create Jadwal';
+$this->params['breadcrumbs'][] = ['label' => 'Jadwals', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="poli-create">
+<div class="jadwal-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

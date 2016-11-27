@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\ralan\models\PoliSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Poli';
+$this->title = 'Polis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poli-index">
@@ -25,12 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_poli',
-            'id_dokter',    
+            'id_dokter',
             'nama_poli',
-           
-            'sesi',
-            'hari',
-            'jam_kerja',
+            'id_jadwal',
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

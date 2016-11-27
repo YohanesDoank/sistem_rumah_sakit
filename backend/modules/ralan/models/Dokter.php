@@ -34,6 +34,7 @@ class Dokter extends \yii\db\ActiveRecord
             [['nama_dokter', 'spesialis'], 'required'],
             [['nama_dokter'], 'string', 'max' => 30],
             [['spesialis'], 'string', 'max' => 50],
+            [['posisi'], 'string', 'max' => 7],
         ];
     }
 
@@ -46,6 +47,7 @@ class Dokter extends \yii\db\ActiveRecord
             'id_dokter' => 'Id Dokter',
             'nama_dokter' => 'Nama Dokter',
             'spesialis' => 'Spesialis',
+            'posisi' =>'Posisi',
         ];
     }
 
@@ -57,6 +59,20 @@ class Dokter extends \yii\db\ActiveRecord
         return $this->hasMany(Medrec::className(), ['id_dokter' => 'id_dokter']);
     }
 
+    // public static function dropdown()
+    // {   
+    //     //get and cache data
+    //     static $dropdown;
+    //     if($dropdown === null){
+    //         //get all record from database and generate
+    //         $models = static::find()->all();
+    //         foreach($models as $model){
+    //             $dropdown($model->id) = $model->dokter;
+    //         }
+    //     }
+
+    //     return $dropdown;
+    // }
     /**
      * @return \yii\db\ActiveQuery
      */

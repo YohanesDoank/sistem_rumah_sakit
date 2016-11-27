@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use backend\modules\ralan\models\Jadwal;
 /**
  * PoliController implements the CRUD actions for Poli model.
  */
@@ -135,12 +136,20 @@ class PoliController extends Controller
 
     }
 
-    public function actionGetIdDokter($no_reg)
+    public function actionListJadwal($jenis_poli)
     {
-        $id_dokter=Poli::findOne($no_reg);
-        echo Json::encode($id_dokter);
 
+        //Count
+        $countjadwal = Jadwal::find()->where(['jenis_poli'=> $jenis_poli])->count();
+
+        $jadwal = Jadwal::find()->where(['jenis_poli'=>$jenis_poli])->all();
+        if($countjadwal >0){
+            foreach($jadwal as $jadwal) echo "option value='".$jadwal->jenis_poli."'>".$jadwal->jadwal."</option>";
+        }else{
+            echo "<option-</option>";
+        }
     }
+
     /**
      * Finds the Poli model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -156,4 +165,19 @@ class PoliController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
+    public function beforeAction($action)
+    {
+      if (!parent::beforeAction($action)) {
+          return false;
+      }
+
+      if (\Yii::$app->user->identity->role !== "ralan") {
+          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN RAWAT JALAN !');
+      }
+
+      return true;
+    }
 }
+

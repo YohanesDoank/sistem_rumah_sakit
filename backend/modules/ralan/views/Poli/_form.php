@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\modules\ralan\models\Dokter;
 use backend\modules\ralan\models\DokterSearch;
+use backend\modules\ralan\models\Jadwal;
 
 use yii\helpers\ArrayHelper;
 use yii\filters\VerbFilter;
@@ -39,14 +40,28 @@ use kartik\select2\Select2;
         <?= $form->field($model, 'nama_poli')->textInput(['maxlength' => true, 'style'=>'width : 260px', 'readonly'=>true]) ?>
     </div>
     <div class="col-sm-4 ">
-        <?= $form->field($model, 'sesi')->dropdownList(['1' => '1 (07.00-13.00)', '2' => '2 (14.00-20.00)'], ['prompt' => '---Pilih Sesi berdasarkan waktu---','style'=>'width : 260px', 'id'=>'sesi']) ?>
+    	<?= $form->field($model, 'id_jadwal')->widget(Select2::classname(), [
+    		'data' => ArrayHelper::map(Jadwal::find()->all(), 'id_jadwal',function($model, $defaultValue) {
+        return $model['jenis_poli'].' | ruang: '.$model['ruang'].' | sesi: '.$model['sesi'];
+    },'hari'),
+    		'language' =>'en',
+    		'options' => ['placeholder' =>'Select Jadwal',],
+    		'pluginOptions' =>[
+    				'allowClear' =>true
+    			],
+    			
+    		]) ;
+
+    	?>
+
+    	
         
     </div>
 </div>
 
     
     
-    <?= $form->field($model, 'hari')->dropdownList(['Mon' => 'Senin', 'Tue' => 'Selasa', 'Wed' => 'Rabu', 'Thu' => 'Kamis', 'Fri' => 'Jumat', 'Sat' => 'Sabtu','Sun' => 'Minggu'], ['prompt' => '---Pilih Hari---', 'style'=>'width : 260px']) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -68,16 +83,6 @@ $('#id_dokter').change(function(){
         $('#poli-nama_poli').attr('value', data.spesialis);
     });
    });
-
-// $('#sesi').change(function(){
-//     var session = $(this).val();
-//     alert(session);
-     
-//     if(session==1)
-//         $('#poli-jam_kerja').attr('value', '07.00-13.00');
-//     if(session==2)
-//         $('#poli-jam_kerja').attr('value', '14.00-20.00');
-//    });
 JS;
 $this->registerJs($script); 
 ?>

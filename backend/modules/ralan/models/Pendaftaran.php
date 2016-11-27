@@ -75,6 +75,21 @@ class Pendaftaran extends \yii\db\ActiveRecord
         return $this->hasOne(RalanTblpasien::className(), ['id_pasien' => 'id_pasien']);
     }
 
+    // public static function dropdown()
+    // {   
+    //     //get and cache data
+    //     static $dropdown;
+    //     if($dropdown === null){
+    //         //get all record from database and generate
+    //         $models = static::find()->all();
+    //         foreach($models as $model){
+    //             $dropdown($model->id) = $model->pendaftaran;
+    //         }
+    //     }
+
+    //     return $dropdown;
+    // }
+
     /**
      * @return \yii\db\ActiveQuery
      */

@@ -113,10 +113,16 @@ class PendaftaranController extends Controller
 
     }
 
-    public function actionGetIdPasien($no_reg)
+    public function actionGetId_pasien($no_reg)
     {
         $id_pasien=Pendaftaran::findOne($no_reg);
         echo Json::encode($id_pasien);
+
+    }
+    public function actionGetId_dokter($no_reg)
+    {
+        $id_dokter=Pendaftaran::findOne($no_reg);
+        echo Json::encode($id_dokter);
 
     }
     /**
@@ -133,5 +139,18 @@ class PendaftaranController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function beforeAction($action)
+    {
+      if (!parent::beforeAction($action)) {
+          return false;
+      }
+
+      if (\Yii::$app->user->identity->role !== "ralan") {
+          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN RAWAT JALAN !');
+      }
+
+      return true;
     }
 }
