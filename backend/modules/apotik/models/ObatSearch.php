@@ -18,9 +18,8 @@ class ObatSearch extends Obat
     public function rules()
     {
         return [
-            [['kode_obat', 'id_admin'], 'integer'],
-            [['nama_obat', 'jenis_obat', 'indikasi_obat', 'kontraindikasi_obat', 'adverse_drug_reaction', 'cara_minum', 'id_pemasok_obat'], 'safe'],
-            [['harga_satuan'], 'number'],
+            [['kode_obat', 'harga_satuan', 'stok', 'id_admin'], 'integer'],
+            [['nama_obat', 'jenis_obat', 'indikasi_obat', 'kontraindikasi_obat', 'adverse_drug_reaction', 'cara_minum', 'tgl_kadaluarsa', 'id_pemasok_obat'], 'safe'],
         ];
     }
 
@@ -62,6 +61,8 @@ class ObatSearch extends Obat
         $query->andFilterWhere([
             'kode_obat' => $this->kode_obat,
             'harga_satuan' => $this->harga_satuan,
+            'tgl_kadaluarsa' => $this->tgl_kadaluarsa,
+            'stok' => $this->stok,
             'id_admin' => $this->id_admin,
         ]);
 

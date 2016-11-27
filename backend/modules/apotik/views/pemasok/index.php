@@ -7,16 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\apotik\models\PemasokSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pemasoks';
+$this->title = 'Pemasok';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pemasok-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="fa fa-fw fa-user-circle-o"></i><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pemasok', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-plus"> |</i> Create Pemasok', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama',
             'no_telp',
             'alamat',
-            'id_admin',
+            // 'id_admin',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

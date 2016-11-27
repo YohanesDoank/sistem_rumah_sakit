@@ -7,15 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\apotik\models\ResepSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'APOTIK';
+$this->title = '[APOTIK]';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="resep-index">
-    <h1><?= Html::encode("[Resep]") ?></h1> 
+    <h1><i class='fa fa-list-alt'></i> Data Resep</h1> 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Resep', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-plus-circle"> | </i> Create Resep', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

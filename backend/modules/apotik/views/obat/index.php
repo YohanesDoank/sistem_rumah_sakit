@@ -7,16 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\apotik\models\ObatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Obats';
+$this->title = 'Data Obat';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="obat-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="fa fa-fw fa-medkit"></i><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Obat', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-plus"> |</i> Create Obat', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'kode_obat',
+            // 'kode_obat',
             'nama_obat',
             'jenis_obat',
             // 'indikasi_obat:ntext',
@@ -32,8 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'adverse_drug_reaction',
             // 'cara_minum',
             'harga_satuan',
+            'tgl_kadaluarsa',
+            'stok',
             'id_pemasok_obat',
-            'id_admin',
+            // 'id_pemasok_obat',
+            // 'id_admin',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

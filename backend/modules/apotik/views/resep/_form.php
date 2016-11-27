@@ -17,15 +17,28 @@ use backend\modules\apotik\models\Obat;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\apotik\models\Resep */
 /* @var $form yii\widgets\ActiveForm */
-
+$result = $this->context->getmaxid();
+$maxid = 0;
+foreach ($result as $row) {
+    $maxid = $row['max_id'];
+    $maxid += 1;
+}
 ?>
-<?php $this->title = 'Create Resep'; ?>
+<?php $this->title = 'Create Resep'; ?> 
+<?= Html::a('<i class="fa fa-fw fa-home"> |</i> Menu Utama Resep', ['index'], ['class' => 'btn btn-success']) ?>
+<br><br>
 <div class="customer-form">
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
         <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Resep</h3>
-
+            <?php 
+            if (Yii::$app->controller->action->id == "create") {
+            ?>
+             <h3 class="box-title"><i class="fa fa-list-ol"></i><strong> Resep : <?php echo $maxid; ?></strong></h3>
+            <?php } else{
+            ?>
+             <h3 class="box-title"><i class="fa fa-list-ol"></i><strong> Resep : <?php echo $model->nomor_resep; ?></strong></h3>
+            <?php } ?>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
                   <i class="fa fa-minus"></i></button>
@@ -35,17 +48,6 @@ use backend\modules\apotik\models\Obat;
             <div class="box-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <?= $form->field($model, 'id_admin')->textInput(['value' => Yii::$app->user->identity->id]) ?>        
-                    </div>
-                    <div class="col-sm-6">
-                        <?php $date = date('Y-m-d'); ?>
-                        <?= $form->field($model, 'resep_tgl')->textInput(
-                                ['type' => 'date','value' => $date]
-                        )?> 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
                         <?= $form->field($model, 'id_pasien')->widget(Select2::classname(), [
                             'data' => ArrayHelper::map(Pasien::find()->all(),'id_pasien', 'nama'),
                             'language' => 'en',
@@ -53,8 +55,16 @@ use backend\modules\apotik\models\Obat;
                             'pluginOptions' => [
                                 'allowClear' => true
                             ],  
-                        ]); ?>
+                        ])->label('<i class="fa fa-user"></i> Nama Pasien : '); ?>
                     </div>
+                    <div class="col-sm-6">
+                        <?php $date = date('Y-m-d'); ?>
+                        <?= $form->field($model, 'resep_tgl')->textInput(
+                                ['type' => 'date','value' => $date]
+                        )->label('<i class="fa fa-calendar"></i> Tanggal :')?> 
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <?= $form->field($model, 'id_dokter')->widget(Select2::classname(), [
                             'data' => ArrayHelper::map(Dokter::find()->all(),'id_dokter', 'nama_dokter', 'spesialis'),
@@ -63,25 +73,18 @@ use backend\modules\apotik\models\Obat;
                             'pluginOptions' => [
                                 'allowClear' => true
                             ],  
-                        ]); ?>
+                        ])->label('<i class="fa fa-user-md"></i> Nama Dokter : '); ?>
                     </div>
-                </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="col-sm-6">
                         <?= $form->field($model, 'id_apoteker')->widget(Select2::classname(), [
                             'data' => ArrayHelper::map(Apoteker::find()->all(),'id_apoteker', 'nama'),
                             'language' => 'en',
                             'options' => ['placeholder' => 'Select Apoteker ...', 'id' => 'apoteker'],
                             'pluginOptions' => [
                                 'allowClear' => true
-                            ], ]); 
-                        ?>
-                        </div>
-                        <div class="col-sm-6">
-
-                        </div>
+                            ], ])->label('<i class="fa fa-user-o"></i> Nama Apoteker : '); ?>
                     </div>
+                </div>
                 <div class="padding-v-md">
                     <div class="line line-dashed"></div>
                 </div>
@@ -107,7 +110,7 @@ use backend\modules\apotik\models\Obat;
             ]); ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-plus-square"></i> Detail Obat
+                    <i class="fa fa-list-ol"></i> Detail Obat
                     <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Tambah Obat Baru</button>
                     <div class="clearfix"></div>
                 </div>
@@ -127,26 +130,16 @@ use backend\modules\apotik\models\Obat;
                                                 echo Html::activeHiddenInput($modelObat, "[{$index}]nomor");
                                             }
                                         ?>
-
-                                        <!-- <?= $form->field($modelObat, '[{$index}]kode_obat')->widget(Select2::classname(), [
-                                            'data' => ArrayHelper::map(Obat::find()->all(),'kode_obat', 'nama_obat'),
-                                            'language' => 'en',
-                                            'options' => ['placeholder' => 'Select Obat ...', 'id' => 'obat'],
-                                            'pluginOptions' => [
-                                                'allowClear' => true
-                                            ],  
-                                        ]); ?> -->
                                         <?= $form->field($modelObat, "[{$index}]kode_obat")->widget(Select2::classname(), [
                                             'data' => ArrayHelper::map(Obat::find()->all(),'kode_obat', 'nama_obat'),
                                             'language' => 'en',
-                                            'options' => ['placeholder' => 'Select Obat ...', 'id' => 'obat'],
+                                            'options' => ['placeholder' => 'Select Obat ...'], 
                                             'pluginOptions' => [
                                                 'allowClear' => true
                                             ],  
                                         ]); ?>
-                                        <!-- <?= $form->field($modelObat, "[{$index}]kode_obat")->textInput(['maxlength' => true]) ?> -->
 
-                                        <?= $form->field($modelObat, "[{$index}]jumlah")->textInput(['maxlength' => true]) ?>
+                                        <?= $form->field($modelObat, "[{$index}]jumlah")->textInput(['maxlength' => true, 'type' => 'number', 'placeholder' => 'Isi jumlah angka dalam MG']) ?>
                                             
                                         </div><!-- end:row -->
                                     </div>
@@ -159,6 +152,7 @@ use backend\modules\apotik\models\Obat;
             <!-- /.box-footer-->
           </div>
     
+                        <?= $form->field($model, 'id_admin')->hiddenInput(['value' => Yii::$app->user->identity->id, 'hidden' => 'true',])->label(false) ?>
     
 
     <div class="form-group">

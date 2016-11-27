@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pemasok-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="fa fa-user-circle-o"></i> <?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

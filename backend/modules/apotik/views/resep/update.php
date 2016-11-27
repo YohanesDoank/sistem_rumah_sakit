@@ -6,8 +6,8 @@ use backend\modules\apotik\models\ResepObat;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\apotik\models\Resep */
 
-$this->title = 'Update Resep: ' . $model->nomor_resep;
-$this->params['breadcrumbs'][] = ['label' => 'Reseps', 'url' => ['index']];
+$this->title = 'Update Resep : ' . $model->nomor_resep;
+$this->params['breadcrumbs'][] = ['label' => 'Resep', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->nomor_resep, 'url' => ['view', 'nomor_resep' => $model->nomor_resep]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
