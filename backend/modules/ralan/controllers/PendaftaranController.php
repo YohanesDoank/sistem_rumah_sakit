@@ -125,6 +125,13 @@ class PendaftaranController extends Controller
         echo Json::encode($id_dokter);
 
     }
+
+    public function actionGetId_poli($no_reg)
+    {
+        $id_poli=Pendaftaran::findOne($no_reg);
+        echo Json::encode($id_poli);
+
+    }
     /**
      * Finds the Pendaftaran model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

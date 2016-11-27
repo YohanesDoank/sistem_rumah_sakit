@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\ralan\models\MedrecSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Medrecs';
+$this->title = 'Medrec';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="medrec-index">

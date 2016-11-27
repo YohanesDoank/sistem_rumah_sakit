@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\ralan\models\PasienSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pasiens';
+$this->title = 'Pasien';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasien-index">

@@ -8,7 +8,7 @@ use backend\modules\ralan\models\Jadwal;
 /* @var $searchModel backend\modules\ralan\models\PoliSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Polis';
+$this->title = 'Poli yang Tersedia: ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poli-index">
