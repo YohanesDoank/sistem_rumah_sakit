@@ -6,6 +6,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\AdminLoginForm;
+use backend\modules\apotik\models\Obat;
+use backend\modules\apotik\models\Resep;
 
 /**
  * Site controller
@@ -60,7 +62,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (\Yii::$app->user->identity->role === "apotik") {
+            return $this->render('@backend/modules/apotik/views/default/index');
+        }else if (\Yii::$app->user->identity->role === "ralan") {
+            return $this->render('@backend/modules/ralan/views/default/index');
+        }else if (\Yii::$app->user->identity->role === "ranap") {
+            return $this->render('@backend/modules/ranap/views/default/index');
+        }
     }
 
     /**
@@ -94,5 +102,17 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function getjumlahresep()
+    {
+      $models = Resep::find()->count();
+      return $models;
+    }
+
+    public function getjumlahobat()
+    {
+      $models = Obat::find()->count();
+      return $models;
     }
 }
