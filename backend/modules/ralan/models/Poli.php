@@ -56,10 +56,10 @@ class Poli extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRalanTblpendaftarans()
-    {
-        return $this->hasMany(RalanTblpendaftaran::className(), ['id_poli' => 'id_poli']);
-    }
+    // public function getRalanTblpendaftarans()
+    // {
+    //     return $this->hasMany(RalanTblpendaftaran::className(), ['id_poli' => 'id_poli']);
+    // }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -75,5 +75,15 @@ class Poli extends \yii\db\ActiveRecord
     public function getIdJadwal()
     {
         return $this->hasOne(Jadwal::className(), ['id_jadwal' => 'id_jadwal']);
+    }
+
+    public function getJadwals()
+    {
+        return $this->hasOne(Jadwal::className(), ['id_jadwal'=>'id_jadwal']);
+    }
+
+     public function getDokters()
+    {
+        return $this->hasOne(Dokter::className(), ['id_dokter'=>'id_dokter']);
     }
 }
