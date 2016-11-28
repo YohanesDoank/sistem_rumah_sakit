@@ -58,7 +58,7 @@
             <div class="icon">
               <i class="fa fa-times-circle"></i>
             </div>
-            <a href="index.php?PembayaranSearch%5Bid%5D=&PembayaranSearch%5Bstatus%5D=BELUM+LUNAS&PembayaranSearch%5Bnomor_resep%5D=&PembayaranSearch%5Btgl_pembayaran%5D=&PembayaranSearch%5Btotal_pembayaran%5D=&PembayaranSearch%5Bmetode_pembayaran%5D=&r=apotik%2Fpembayaran" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="index.php?PembayaranSearch%5Bid%5D=&PembayaranSearch%5Bstatus%5D=BELUM&PembayaranSearch%5Bnomor_resep%5D=&PembayaranSearch%5Btgl_pembayaran%5D=&PembayaranSearch%5Btotal_pembayaran%5D=&PembayaranSearch%5Bmetode_pembayaran%5D=&r=apotik%2Fpembayaran" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
