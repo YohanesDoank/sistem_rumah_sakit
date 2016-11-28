@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_pasien',
             'id_dokter',
             'jenis_pemeriksaan',
-            // 'tanggal_pemeriksaan',
-            // 'total_biaya_pemeriksaan',
-            // 'status_pemeriksaan',
+            'tanggal_pemeriksaan',
+            'total_biaya_pemeriksaan',
+            'status_pemeriksaan',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

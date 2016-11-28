@@ -35,6 +35,7 @@ class Poli extends \yii\db\ActiveRecord
             [['id_dokter', 'id_jadwal'], 'integer'],
             [['nama_poli', 'id_jadwal'], 'required'],
             [['nama_poli'], 'string', 'max' => 50],
+            [['hari'], 'string', 'max' => 7],
             [['id_dokter'], 'exist', 'skipOnError' => true, 'targetClass' => Dokter::className(), 'targetAttribute' => ['id_dokter' => 'id_dokter']],
             [['id_jadwal'], 'exist', 'skipOnError' => true, 'targetClass' => Jadwal::className(), 'targetAttribute' => ['id_jadwal' => 'id_jadwal']],
         ];
@@ -50,6 +51,7 @@ class Poli extends \yii\db\ActiveRecord
             'id_dokter' => 'Id Dokter',
             'nama_poli' => 'Nama Poli',
             'id_jadwal' => 'Id Jadwal',
+            'hari' => 'Hari',
         ];
     }
 

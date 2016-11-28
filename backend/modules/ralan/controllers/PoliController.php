@@ -136,6 +136,13 @@ class PoliController extends Controller
 
     }
 
+        public function actionGetHari($jadwal_id)
+    {
+        $hari=Jadwal::findOne($jadwal_id);
+        echo Json::encode($hari);
+
+    }
+
 
     public function actionListJadwal($jenis_poli)
     {

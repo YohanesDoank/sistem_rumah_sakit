@@ -40,17 +40,17 @@ $this->title = 'Sistem Informasi Rumah Sakit - Rawat Jalan';
             <div class="inner">
                 <?php  
                 $connection = Yii::$app->db; 
-                $command = $connection->createCommand('SELECT count(*) FROM ranap_ranjang WHERE status = 0'); 
+                $command = $connection->createCommand('SELECT count(*) FROM ralan_tblmedicalrecord'); 
                 $artikelCount = $command->queryScalar();            
                             echo "<h3>" . $artikelCount . "</h3>" ;
                            
                        ?>   
-              <p>Kamar Tersedia</p>
+              <p>List Medical Record</p>
             </div>
             <div class="icon">
               <i class="fa fa-hospital-o"></i>
             </div>
-            <a href="index.php?r=ranap%2Franjang" class="small-box-footer">Lihat data Kamar<i class="fa fa-arrow-circle-right"></i></a>
+          <a href="index.php?r=ralan%2Fmedrec" class="small-box-footer">Lihat Daftar Medical Record<i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -92,7 +92,7 @@ $this->title = 'Sistem Informasi Rumah Sakit - Rawat Jalan';
             <div class="icon">
               <i class="fa fa-user-md"></i>
             </div>
-            <a href="index.php?r=ranap%2Fdokter" class="small-box-footer">Lihat data Dokter<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="index.php?r=ralan%2Fdokter" class="small-box-footer">Lihat data Dokter<i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
