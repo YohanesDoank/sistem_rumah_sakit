@@ -61,7 +61,7 @@ use backend\modules\ranap\models\JenisPenyakit;
     <div class="row">
         <div class="col-sm-4">
             <?= $form->field($model, 'kode_dokter')->widget(Select2::classname(), [
-            'data' => ArrayHelper::map(Dokter::find()->all(),'kode_dokter','kode_dokter'),
+            'data' => ArrayHelper::map(Dokter::find()->all(),'id_dokter','nama_dokter','id_dokter'),
             'language' => 'id',
             'options' => ['placeholder' => 'Pilih nama dokter....','id' => 'kodedokter'],
             'pluginOptions' => [
@@ -71,8 +71,13 @@ use backend\modules\ranap\models\JenisPenyakit;
         </div>
 
         <div class="col-sm-3">
-        <label class="control-label" for="namapasien">Nama Dokter</label>
+        <label class="control-label" for="namapasien">ID Dokter</label>
         <input type="text" id="namadokter" class="form-control" name="namapasien" maxlength="500" readonly=""></input>
+        </div>
+
+        <div class="col-sm-3">
+        <label class="control-label" for="namapasien">Spesialis</label>
+        <input type="text" id="spesdokter" class="form-control" name="namapasien" maxlength="500" readonly=""></input>
         </div>
     </div>
 
@@ -126,7 +131,7 @@ $('#koderanap').change(function(){
         $.get('index.php?r=ranap/pasien/get-name-address',{ kode_pasien : pkode_pasien }, function(datap){
         var datap = $.parseJSON(datap);
             //alert(datap.nama_pasien);
-            $('#namapasien').attr('value',datap.nama_pasien);
+            $('#namapasien').attr('value',datap.nama);
         });
         $('#koderanjang').attr('value',data.kode_ranjang);
         $('#dokterpasien').attr('value',data.kode_dokter);
@@ -137,10 +142,11 @@ $('#koderanap').change(function(){
 $('#kodedokter').change(function(){
 var dkode_dokter = $(this).val();
 
-$.get('index.php?r=ranap/dokter/get-name-doctor',{ kode_dokter : dkode_dokter }, function(datad){
+$.get('index.php?r=ranap/dokter/get-name-doctor',{ id_dokter : dkode_dokter }, function(datad){
         var datad = $.parseJSON(datad);
             //alert(datad.nama_dokter);
-            $('#namadokter').attr('value',datad.nama_dokter);
+            $('#namadokter').attr('value',datad.id_dokter);
+            $('#spesdokter').attr('value',datad.spesialis);
         });
         
 

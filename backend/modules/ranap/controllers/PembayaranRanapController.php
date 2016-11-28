@@ -3,16 +3,16 @@
 namespace backend\modules\ranap\controllers;
 
 use Yii;
-use backend\modules\ranap\models\Tindakan;
-use backend\modules\ranap\models\TindakanSearch;
+use backend\modules\ranap\models\PembayaranRanap;
+use backend\modules\ranap\models\PembayaranRanapSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TindakanController implements the CRUD actions for Tindakan model.
+ * PembayaranRanapController implements the CRUD actions for PembayaranRanap model.
  */
-class TindakanController extends Controller
+class PembayaranRanapController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class TindakanController extends Controller
     }
 
     /**
-     * Lists all Tindakan models.
+     * Lists all PembayaranRanap models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TindakanSearch();
+        $searchModel = new PembayaranRanapSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class TindakanController extends Controller
     }
 
     /**
-     * Displays a single Tindakan model.
+     * Displays a single PembayaranRanap model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class TindakanController extends Controller
     }
 
     /**
-     * Creates a new Tindakan model.
+     * Creates a new PembayaranRanap model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tindakan();
+        $model = new PembayaranRanap();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->kode_tindakan]);
+            return $this->redirect(['view', 'id' => $model->kode_bayar_ranap]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class TindakanController extends Controller
     }
 
     /**
-     * Updates an existing Tindakan model.
+     * Updates an existing PembayaranRanap model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +85,7 @@ class TindakanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->kode_tindakan]);
+            return $this->redirect(['view', 'id' => $model->kode_bayar_ranap]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class TindakanController extends Controller
     }
 
     /**
-     * Deletes an existing Tindakan model.
+     * Deletes an existing PembayaranRanap model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class TindakanController extends Controller
     }
 
     /**
-     * Finds the Tindakan model based on its primary key value.
+     * Finds the PembayaranRanap model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Tindakan the loaded model
+     * @return PembayaranRanap the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tindakan::findOne($id)) !== null) {
+        if (($model = PembayaranRanap::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

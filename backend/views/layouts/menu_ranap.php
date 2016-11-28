@@ -4,6 +4,7 @@
                 'items' => [
                     ['label' => 'Menu Rawat Inap', 'options' => ['class' => 'header']],
                     ['label' => 'Menu Utama', 'icon' => 'fa fa-registered', 'url' => ['/ranap/']],
+                    ['label' => 'Pembayaran', 'icon' => 'fa fa-credit-card', 'url' => ['/ranap/pembayaran-ranap']],
                     ['label' => 'Pendaftaran Rawat Inap', 'icon' => 'fa fa-address-card-o', 'url' => ['/ranap/pendaftaran/create'],
                         'items' => [
                             ['label' => 'Data Rawat Inap', 'icon' => 'fa fa-circle-o', 'url' => ['/ranap/pendaftaran']],

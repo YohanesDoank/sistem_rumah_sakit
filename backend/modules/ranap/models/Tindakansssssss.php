@@ -15,9 +15,6 @@ use Yii;
  * @property integer $kode_penyakit
  * @property string $biaya_tindakan
  * @property string $keterangan
- *
- * @property RanapJenisPenyakit $kodePenyakit
- * @property Dokter $kodeDokter
  */
 class Tindakan extends \yii\db\ActiveRecord
 {
@@ -41,8 +38,6 @@ class Tindakan extends \yii\db\ActiveRecord
             [['biaya_tindakan'], 'number'],
             [['nama_tindakan'], 'string', 'max' => 20],
             [['keterangan'], 'string', 'max' => 65],
-            [['kode_penyakit'], 'exist', 'skipOnError' => true, 'targetClass' => JenisPenyakit::className(), 'targetAttribute' => ['kode_penyakit' => 'kode_penyakit']],
-            [['kode_dokter'], 'exist', 'skipOnError' => true, 'targetClass' => Dokter::className(), 'targetAttribute' => ['kode_dokter' => 'id_dokter']],
         ];
     }
 
@@ -61,21 +56,5 @@ class Tindakan extends \yii\db\ActiveRecord
             'biaya_tindakan' => 'Biaya Tindakan',
             'keterangan' => 'Keterangan',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getKodePenyakit()
-    {
-        return $this->hasOne(RanapJenisPenyakit::className(), ['kode_penyakit' => 'kode_penyakit']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getKodeDokter()
-    {
-        return $this->hasOne(Dokter::className(), ['id_dokter' => 'kode_dokter']);
     }
 }
