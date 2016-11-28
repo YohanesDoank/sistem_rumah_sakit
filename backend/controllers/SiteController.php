@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use common\models\AdminLoginForm;
 use backend\modules\apotik\models\Obat;
 use backend\modules\apotik\models\Resep;
+use backend\modules\apotik\models\Pembayaran;
 
 /**
  * Site controller
@@ -104,6 +105,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    // fungsi buat index apotik ---> start
     public function getjumlahresep()
     {
       $models = Resep::find()->count();
@@ -115,4 +117,19 @@ class SiteController extends Controller
       $models = Obat::find()->count();
       return $models;
     }
+
+    public function getpembayaranlunas()
+    {
+      $models = Pembayaran::find()->where(['status' => 'LUNAS'])->count();
+      return $models;
+    }
+
+
+    public function getpembayaranbelumlunas()
+    {
+      $models = Pembayaran::find()->where(['status' => 'BELUM'])->count();
+      return $models;
+    }
+
+    // <--- end for apotik
 }
