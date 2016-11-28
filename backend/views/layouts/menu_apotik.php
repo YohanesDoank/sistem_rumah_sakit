@@ -4,7 +4,8 @@
                 'items' => [
                     ['label' => 'Menu Apotik', 'options' => ['class' => 'header']],
                     ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard', 'url' => 'index.php?r=apotik'],
-                    ['label' => 'Antrian', 'icon' => 'fa fa-wheelchair-alt', 'url' => 'index.php?r=apotik/antrian'],
+                    ['label' => 'Pembayaran Resep', 'icon' => 'fa fa-shopping-cart', 'url' => 'index.php?r=apotik/pembayaran'],
+                    ['label' => 'Antrian', 'icon' => 'fa fa-users', 'url' => 'index.php?r=apotik/antrian'],
                     ['label' => 'Resep', 'icon' => 'fa fa-list', 'url' => '#',
                         'items' => [
                             ['label' => 'Data Resep', 'icon' => 'fa fa-list-alt', 'url' => 'index.php?r=apotik/resep'],

@@ -12,6 +12,7 @@ use backend\modules\apotik\models\ResepObat;
 use backend\modules\apotik\models\Pasien;
 use backend\modules\apotik\models\Dokter;
 use backend\modules\apotik\models\Apoteker;
+use backend\modules\apotik\models\Pembayaran;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -236,6 +237,15 @@ class ResepController extends Controller
       $result = $command->queryAll();
       return $result;
     }
+
+    public function getpembayaran($id)
+    {
+      $connection = Yii::$app->getDb();
+      $command = $connection->createCommand('SELECT * FROM apotik_pembayaran WHERE nomor_resep = "'.$id.'"');
+      $result = $command->queryAll();
+      return $result;
+    }
+
     public function getmaxid()
     {
       $connection = Yii::$app->getDb();
@@ -267,11 +277,6 @@ class ResepController extends Controller
     {
       $models = Apoteker::find()->where(['id_apoteker' => $id])->one();
       return $models->nama;
-    }
-
-    public function gettitle($id)
-    {
-      return "Apotik - Resep";
     }
 
     public function beforeAction($action)

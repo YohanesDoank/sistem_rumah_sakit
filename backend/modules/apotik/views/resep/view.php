@@ -158,7 +158,22 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-list-alt"></i> PEMBAYARAN RESEP KE-n
+          <?php 
+              $connection2 = Yii::$app->getDb();
+              $command2 = $connection2->createCommand('SELECT * FROM apotik_pembayaran WHERE nomor_resep = "'.$id.'"');
+              $result2 = $command2->queryAll();
+              $status_pembayaran;
+              $metode_pembayaran;
+              $tgl_pembayaran;
+                if ($result2) {
+                    foreach ($result2 as $row) {  
+                      $status_pembayaran = $row['status'];
+                      $metode_pembayaran = $row['metode_pembayaran'];
+                      $tgl_pembayaran = $row['tgl_pembayaran'];
+                      echo "Resep Nomor-".$row['id'];
+                    }
+                  }
+            ?>
           </h2>
         </div>
         <!-- /.col -->
@@ -169,7 +184,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <address>
             <strong>Pasien : </strong><?= $this->context->getpasien($id_pasien);  ?><br>
             <b>ID Pasien : </b><?php echo $id_pasien; ?><br>
-            <b>Tertulis tanggal : </b><?= $model->resep_tgl ?>
+            <b>Tertulis tanggal : </b><?= $tgl_pembayaran ?>
           </address>
         </div>
         <!-- /.col -->
@@ -225,14 +240,28 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-6">
           <p class="lead">Pembayaran dengan :</p>
               <label>
-                  <input type="checkbox" value="Tunai">
+                  <input type="checkbox" value="TUNAI" 
+                    <?php if ($metode_pembayaran == "TUNAI") {
+                      ?>
+                      checked
+                    <?php } ?>
+                  >
                   Tunai/Cash
-                  <input type="checkbox" value="Gesek">
+                  <input type="checkbox" value="GESEK"
+                    <?php if ($metode_pembayaran == "GESEK") {
+                      ?>
+                      checked
+                    <?php } ?>
+                  >
                   Gesek
               </label>
 
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem.
+            <?php if ($status_pembayaran == "LUNAS") {
+              echo '<img src="assets\f2c36125\img\LUNAS.png" class="img-square" alt="LUNAS IMG" width="350"/>';
+            } else { ?>
+            Mohon admin jangan lupa untuk mengupdate struk ini, hingga dicap LUNAS. Terima Kasih.
+          <?php } ?>
           </p>
         </div>
         <!-- /.col -->
