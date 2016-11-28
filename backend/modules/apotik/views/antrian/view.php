@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\modules\apotik\models\Antrian */
 
 $this->title = $model->nomor;
-$this->params['breadcrumbs'][] = ['label' => 'Antrians', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Antrian', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="antrian-view">

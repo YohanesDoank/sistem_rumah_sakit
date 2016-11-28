@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pembayaran-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class='fa fa-shopping-cart'></i> Pembayaran Resep</h1> 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([

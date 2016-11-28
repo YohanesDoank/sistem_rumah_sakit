@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\apotik\models\AntrianSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Antrians';
+$this->title = 'Antrian';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="antrian-index">

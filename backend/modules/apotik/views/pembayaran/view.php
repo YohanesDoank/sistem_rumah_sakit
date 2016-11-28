@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\apotik\models\Pembayaran */
 
-$this->title = $model->id;
+$this->title = "Struk Resep-".$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Pembayaran', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

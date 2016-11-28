@@ -5,6 +5,7 @@ namespace backend\modules\apotik\controllers;
 use yii\web\Controller;
 use backend\modules\apotik\models\Obat;
 use backend\modules\apotik\models\Resep;
+use backend\modules\apotik\models\Pembayaran;
 /**
  * Default controller for the `apotik` module
  */
@@ -32,6 +33,18 @@ class DefaultController extends Controller
       return $models;
     }
 
+    public function getpembayaranlunas()
+    {
+      $models = Pembayaran::find()->where(['status' => 'LUNAS'])->count();
+      return $models;
+    }
+
+
+    public function getpembayaranbelumlunas()
+    {
+      $models = Pembayaran::find()->where(['status' => 'BELUM'])->count();
+      return $models;
+    }
 
     public function beforeAction($action)
     {

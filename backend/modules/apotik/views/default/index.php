@@ -1,63 +1,66 @@
 <?= $this->title = "Apotik" ?>
 
 <div class="apotik-default-index">
-    <!-- <h1><?= $this->context->action->uniqueId ?></h1> -->
     <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-plus-square"></i></span>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?= $this->context->getjumlahobat(); ?></h3>
 
-            <div class="info-box-content">
-              <span class="info-box-text">OBAT</span>
-              <span class="info-box-number"><?= $this->context->getjumlahobat(); ?></span>
+              <p>Jumlah Obat</p>
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">RESEP</span>
-              <span class="info-box-number"><?= $this->context->getjumlahresep(); ?></span>
+            <div class="icon">
+              <i class="fa fa-medkit"></i>
             </div>
-            <!-- /.info-box-content -->
+            <a href="index.php?r=apotik/obat" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-          <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?= $this->context->getjumlahresep(); ?></h3>
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
+              <p>Jumlah Resep</p>
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
+            <div class="icon">
+              <i class="fa fa-list-alt"></i>
             </div>
-            <!-- /.info-box-content -->
+            <a href="index.php?r=apotik/resep" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-          <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?= $this->context->getpembayaranlunas(); ?></h3>
+
+              <p>Resep Lunas</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-check-circle"></i>
+            </div>
+            <a href="index.php?PembayaranSearch%5Bid%5D=&PembayaranSearch%5Bstatus%5D=LUNAS&PembayaranSearch%5Bnomor_resep%5D=&PembayaranSearch%5Btgl_pembayaran%5D=&PembayaranSearch%5Btotal_pembayaran%5D=&PembayaranSearch%5Bmetode_pembayaran%5D=&r=apotik%2Fpembayaran" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?= $this->context->getpembayaranbelumlunas(); ?></h3>
+
+              <p>Resep Belum Lunas</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-times-circle"></i>
+            </div>
+            <a href="index.php?PembayaranSearch%5Bid%5D=&PembayaranSearch%5Bstatus%5D=BELUM+LUNAS&PembayaranSearch%5Bnomor_resep%5D=&PembayaranSearch%5Btgl_pembayaran%5D=&PembayaranSearch%5Btotal_pembayaran%5D=&PembayaranSearch%5Bmetode_pembayaran%5D=&r=apotik%2Fpembayaran" class="small-box-footer">Info lebih lanjut <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
       </div>
 </div>
