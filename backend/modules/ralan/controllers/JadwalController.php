@@ -45,6 +45,11 @@ class JadwalController extends Controller
         ]);
     }
 
+    public function getJadwal()
+    {
+        return $this->hasOne(JadwalSearch::className(), ['id' => 'id_jadwal']);
+    }
+
     /**
      * Displays a single Jadwal model.
      * @param integer $id

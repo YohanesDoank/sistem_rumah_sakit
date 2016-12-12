@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jenis_pemeriksaan') ?>
 
-    <?php // echo $form->field($model, 'tanggal_pemeriksaan') ?>
+    <?php echo $form->field($model, 'tanggal_pemeriksaan') ?>
 
-    <?php // echo $form->field($model, 'total_biaya_pemeriksaan') ?>
+    <?php echo $form->field($model, 'total_biaya_pemeriksaan') ?>
 
-    <?php // echo $form->field($model, 'status_pemeriksaan') ?>
+    <?php echo $form->field($model, 'status_pemeriksaan') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

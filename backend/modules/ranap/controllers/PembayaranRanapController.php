@@ -1,18 +1,18 @@
 <?php
 
-namespace backend\modules\ralan\controllers;
+namespace backend\modules\ranap\controllers;
 
 use Yii;
-use backend\modules\ralan\models\Pendaftaran;
-use backend\modules\ralan\models\PendaftaranSearch;
+use backend\modules\ranap\models\PembayaranRanap;
+use backend\modules\ranap\models\PembayaranRanapSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\JSON;
+
 /**
- * PendaftaranController implements the CRUD actions for Pendaftaran model.
+ * PembayaranRanapController implements the CRUD actions for PembayaranRanap model.
  */
-class PendaftaranController extends Controller
+class PembayaranRanapController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class PendaftaranController extends Controller
     }
 
     /**
-     * Lists all Pendaftaran models.
+     * Lists all PembayaranRanap models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PendaftaranSearch();
+        $searchModel = new PembayaranRanapSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PendaftaranController extends Controller
     }
 
     /**
-     * Displays a single Pendaftaran model.
+     * Displays a single PembayaranRanap model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class PendaftaranController extends Controller
     }
 
     /**
-     * Creates a new Pendaftaran model.
+     * Creates a new PembayaranRanap model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Pendaftaran();
+        $model = new PembayaranRanap();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->no_pendaftaran]);
+            return $this->redirect(['view', 'id' => $model->kode_bayar_ranap]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class PendaftaranController extends Controller
     }
 
     /**
-     * Updates an existing Pendaftaran model.
+     * Updates an existing PembayaranRanap model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +85,7 @@ class PendaftaranController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->no_pendaftaran]);
+            return $this->redirect(['view', 'id' => $model->kode_bayar_ranap]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class PendaftaranController extends Controller
     }
 
     /**
-     * Deletes an existing Pendaftaran model.
+     * Deletes an existing PembayaranRanap model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -106,58 +106,19 @@ class PendaftaranController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionGetNoAntrian($poli_id)
-    {
-        $no_antrian=Pendaftaran::find()->where(['id_poli' => $poli_id])->count();
-        return $no_antrian;
-
-    }
-
-    public function actionGetId_pasien($no_reg)
-    {
-        $id_pasien=Pendaftaran::findOne($no_reg);
-        echo Json::encode($id_pasien);
-
-    }
-    public function actionGetId_dokter($no_reg)
-    {
-        $id_dokter=Pendaftaran::findOne($no_reg);
-        echo Json::encode($id_dokter);
-
-    }
-
-    public function actionGetId_poli($no_reg)
-    {
-        $id_poli=Pendaftaran::findOne($no_reg);
-        echo Json::encode($id_poli);
-
-    }
     /**
-     * Finds the Pendaftaran model based on its primary key value.
+     * Finds the PembayaranRanap model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Pendaftaran the loaded model
+     * @return PembayaranRanap the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pendaftaran::findOne($id)) !== null) {
+        if (($model = PembayaranRanap::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-    public function beforeAction($action)
-    {
-      if (!parent::beforeAction($action)) {
-          return false;
-      }
-
-      if (\Yii::$app->user->identity->role !== "ralan") {
-          throw new \yii\web\ForbiddenHttpException('ANDA BUKAN DI BAGIAN RAWAT JALAN !');
-      }
-
-      return true;
     }
 }

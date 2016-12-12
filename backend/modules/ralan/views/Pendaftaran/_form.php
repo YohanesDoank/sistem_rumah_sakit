@@ -73,7 +73,7 @@ $connection = \Yii::$app->db;
 
 
     <?= $form->field($model, 'id_poli')->widget(Select2::classname(),[
-        'data' => ArrayHelper::map(Poli::find()->all(), 'id_poli', 'id_jadwal'),
+        'data' => ArrayHelper::map(Poli::find()->where(['hari'=>'senin'])->all(), 'id_poli', 'id_jadwal'),
         'language' => 'en',
         'options' => ['placeholder' => 'Select Poli', 'style'=>'width : 260px', 'id'=>'id_poli'],
         'pluginOptions'=> [
@@ -142,9 +142,10 @@ $('#id_poli').change(function(){
             var data = $.parseJSON(data);
             alert(data.nama_dokter);
             $('#namadokter').attr('value',data.nama_dokter);
-            $('#spesialis').attr('value',data.spesialis);
+            $('#spesialis').attr('value', data.spesialis);
              
         });
+        
     });
 
    

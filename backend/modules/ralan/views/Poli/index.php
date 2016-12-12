@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use backend\modules\ralan\models\Jadwal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\ralan\models\PoliSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Polis';
+$this->title = 'Poli yang Tersedia: ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poli-index">
@@ -26,10 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_poli',
             'id_dokter',
+            [
+                'label' => 'Nama Dokter',
+                'value' => 'dokters.nama_dokter',
+            ],
             'nama_poli',
             'id_jadwal',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'label' => 'Hari',
+                'value' => 'jadwals.hari',
+            ],
+            [
+                'label' => 'Ruang',
+                'value' => 'jadwals.ruang',
+            ],
+            [
+                'label' => 'Sesi',
+                'value' => 'jadwals.sesi',
+            ],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete} '],
         ],
     ]); ?>
 </div>

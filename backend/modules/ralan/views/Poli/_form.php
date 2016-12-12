@@ -21,40 +21,42 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!-- <?= $form->field($model, 'id_dokter')->dropDownList(
-    ArrayHelper::map(Dokter::find()->all(),'id_dokter', 'nama_dokter','spesialis'),
-        ['prompt'=>'Select Dokter', 'id'=>'id_dokter', 'style'=>'width : 260px'] 
-    )?> -->
 <?= $form->field($model, 'id_dokter')->widget(Select2::classname(),[
-        'data' => ArrayHelper::map(Dokter::find()->all(), 'id_dokter','nama_dokter'),
+        'data' => ArrayHelper::map(Dokter::find()->all(), 'id_dokter','nama_dokter', 'spesialis'),
         'language' => 'en',
         'options' => ['placeholder' => 'Select Dokter', 'style'=>'width : 260px', 'id'=>'id_dokter'],
         'pluginOptions'=> [
             'allowClear' => true
         ],
-    ]);
+    ])->label('<i class="fa fa-fw fa-user-md"></i> Nama Dokter: ');
     
 ?>  
 <div class="row">
     <div class="col-sm-4">
-        <?= $form->field($model, 'nama_poli')->textInput(['maxlength' => true, 'style'=>'width : 260px', 'readonly'=>true]) ?>
+        <?= $form->field($model, 'nama_poli')->textInput(['maxlength' => true, 'style'=>'width : 260px', 'readonly'=>true])->label('<i class="fa fa-medkit"></i> Nama Poli: '); ?>
     </div>
     <div class="col-sm-4 ">
     	<?= $form->field($model, 'id_jadwal')->widget(Select2::classname(), [
-    		'data' => ArrayHelper::map(Jadwal::find()->all(), 'id_jadwal',function($model, $defaultValue) {
+    		'data' => ArrayHelper::map(Jadwal::find()->where(['status_terisi'=>0])->all(), 'id_jadwal',function($model, $defaultValue) {
         return $model['jenis_poli'].' | ruang: '.$model['ruang'].' | sesi: '.$model['sesi'];
-    },'hari'),
+        },'hari'),
     		'language' =>'en',
-    		'options' => ['placeholder' =>'Select Jadwal',],
+    		'options' => ['placeholder' =>'Select Jadwal', 'id'=>'id_jadwal',],
     		'pluginOptions' =>[
     				'allowClear' =>true
     			],
-    			
-    		]) ;
+
+    		])->label('<i class="fa fa-calendar"></i> Jadwal: ') ;
 
     	?>
 
     	
+        
+    </div>
+    <div class="col-sm-4 ">
+        
+
+        <?= $form->field($model, 'hari')->textInput(['maxlength' => true, 'readonly'=>true])->label('<i class="fa fa-calendar"></i> Hari poli aktif: '); ?>
         
     </div>
 </div>
@@ -81,6 +83,17 @@ $('#id_dokter').change(function(){
         var data = $.parseJSON(data);
         // alert(data.spesialis);
         $('#poli-nama_poli').attr('value', data.spesialis);
+    });
+   });
+
+$('#id_jadwal').change(function(){
+    var jadwal_id = $(this).val();
+    //alert(jadwal_id);
+    $.get('index.php?r=ralan/poli/get-hari', {jadwal_id : jadwal_id}, function(data){ 
+        //alert(data); 
+        var data = $.parseJSON(data);
+        //alert(data.hari);
+        $('#poli-hari').attr('value', data.hari);
     });
    });
 JS;

@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'tanggal_tindakan',
             'kode_ranap',
             'kode_dokter',
-            // 'kode_penyakit',
-            // 'biaya_tindakan',
-            // 'keterangan',
+            'kode_penyakit',
+            'biaya_tindakan',
+            'keterangan',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\ralan\models\PasienSearch */
+/* @var $searchModel backend\modules\ranap\models\TindakanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pasien';
+$this->title = 'Tindakans';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pasien-index">
+<div class="tindakan-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pasien', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Tindakan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,17 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_pasien',
-            'nama',
-            'tgl_lahir',
-            'jenis_kelamin',
-            'gol_dar',
-            // 'no_telpon',
-            // 'alamat',
-            // 'pekerjaan',
-            // 'tgl_daftar',
-            // 'status',
-            // 'id_admin',
+            'kode_tindakan',
+            'nama_tindakan',
+            'tanggal_tindakan',
+            'kode_ranap',
+            'kode_dokter',
+            // 'kode_penyakit',
+            // 'biaya_tindakan',
+            // 'keterangan',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

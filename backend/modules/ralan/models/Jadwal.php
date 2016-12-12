@@ -52,7 +52,15 @@ class Jadwal extends \yii\db\ActiveRecord
             'jenis_poli' => 'Jenis Poli',
             'status_terisi' => 'Status Terisi',
         ];
+
     }
+
+
+
+    public function getJadwal()
+{
+    return $this->hasOne(JadwalSearch::className(), ['id' => 'id_jadwal']);
+}
 
     /**
      * @return \yii\db\ActiveQuery

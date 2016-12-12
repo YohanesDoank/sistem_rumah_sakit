@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\ralan\models\PemeriksaanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pemeriksaans';
+$this->title = 'Pemeriksaan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pemeriksaan-index">
@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_pasien',
             'id_dokter',
             'jenis_pemeriksaan',
-            // 'tanggal_pemeriksaan',
-            // 'total_biaya_pemeriksaan',
-            // 'status_pemeriksaan',
+            'tanggal_pemeriksaan',
+            'total_biaya_pemeriksaan',
+            'status_pemeriksaan',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -8,6 +8,8 @@ use backend\modules\ralan\models\PemeriksaanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use backend\modules\ralan\models\Medrec;
 
 /**
  * PemeriksaanController implements the CRUD actions for Pemeriksaan model.
@@ -120,6 +122,13 @@ class PemeriksaanController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionGetMedrec($medrec_id)
+    {
+        $medrec_id=Medrec::findOne($medrec_id);
+        echo Json::encode($medrec_id);
+
     }
 
     public function beforeAction($action)
